@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
+repositories {
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+apply plugin: 'maven-publish'
+apply plugin: 'java'
+
+group = 'com.swiggy.commons'
+version =  '0.0.1-SNAPSHOT'
+
+
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.swiggy.commons'
+            artifactId 'domain-validation'
+            version '0.0.1-SNAPSHOT'
+            from components.java
+        }
+    }
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+
+dependencies {
+}
